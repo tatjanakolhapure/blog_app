@@ -2,7 +2,16 @@
  
 {% block content %}
     <div class="row">
-        <h2>Home Page</h2>
+        <h2>Blog Home</h2>
+        <nav class="navbar navbar-light">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/">Blog Home</a></li>
+                    <li><a href="/top">Top Posts</a></li> 
+                    <li><a href="{% url 'new_post' %}">Add New Post</a></li>                   
+                </ul>
+            </div>
+        </nav>
         <button class="btn btn-default" onclick="location.href='{% url 'new_post' %}'">Add New Post</button>
     </div>
     {% for post in posts %}
