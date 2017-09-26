@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="row">
+        <h2>Related Posts</h2>
+    </div>
+    {% for rel_post in rel_posts %}
+        <div class="row">
+            <hr>
+            <div class="col-md-2 col-sm-3 text-center">
+                <a class="story-img" href="#">
+                    {% if rel_post.image %}
+                        <img src="/media/{{ rel_post.image}}" style="width:100px; height: 100px; background-color: #12ABB2; color: #ffffff;" class="img-circle"">
+                    {% endif %}
+                </a>
+            </div>
+            <div class="col-md-10 col-sm-9">
+                <h3>{{ rel_post.title }}</h3>
+                <div class="row">
+                    <div class="col-xs-9">
+                        <p>{{ rel_post.content|truncatewords:30 }}</p>
+                        <p><button class="btn btn-default" onclick="location.href={{ rel_post.id }}">Read More</button></p>
+                        <p>{{ rel_post.published_date }} | <strong>Views</strong> {{ rel_post.views }} | <strong>Tag</strong> {{ rel_post.tag }} </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
